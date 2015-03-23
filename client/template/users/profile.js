@@ -1,6 +1,9 @@
 Template.userProfile.helpers({
   userPhotos: function () {
     return Photos.find({user_id: Meteor.user()._id});
+  },
+  userPhotos2: function() {
+    return Photos.find({user: Meteor.user()});
   }
 });
 
@@ -20,8 +23,8 @@ Template.userProfile.events({
 });
 
 Template.userProfile.helpers({
-  username: function () {
-    return Meteor.user().emails[0].address;
+  username: function(){
+    return (Meteor.user().emails[0].address).substring(0, (Meteor.user().emails[0].address).indexOf("@"))
   }
 });
 
