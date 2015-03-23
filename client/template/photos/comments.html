@@ -7,11 +7,15 @@
     </form>
   </div>
   {{#each comments}}
+  <div class="row">
     <div class="row">
-      <div class="label comments">
-        {{photoUser}}:
-        {{content}}
+      <div class="small-6 columns each-comment">
+        <div class="commment">
+          <span class="username">{{commenter}}</span>:
+          {{content}}
+        </div>
       </div>
     </div>
+  </div>
   {{/each}}
 </template>

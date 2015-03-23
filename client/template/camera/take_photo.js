@@ -7,7 +7,7 @@ Template.takePhoto.helpers({
 Geolocation.latLng();
 
 if (Meteor.isClient) {
-  Template.showMap.events({
+  Template.takePhoto.events({
     'click .capture': function () {
       MeteorCamera.getPicture({}, function (error, data) {
         Session.set('photo', data);
@@ -29,9 +29,9 @@ if (Meteor.isClient) {
             usersVotedUp: [],
             usersVotedDown: [],
             comments: [],
+            seen: [Meteor.user()._id],
             user: Meteor.user()
-          },
-          $addToSet: { seen: Meteor.user()._id }
+          }
         });
         Router.go('photoPage', {_id: newOne});
       });
